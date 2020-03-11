@@ -4,7 +4,7 @@ Ez az alkalmazás a kollégiumi szobajelentkezést bonyolítja le. A hallgatók 
 Készült a Projekt eszközök tárgyra a 2019/2020/2 félévben.
 
 
-## 2.3 Backend osztályai:
+## 1.1 Backend osztályai:
 
 * Controllers
   * BeosztasController.java
