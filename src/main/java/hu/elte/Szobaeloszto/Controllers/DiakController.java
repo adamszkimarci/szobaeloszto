@@ -66,4 +66,5 @@ public class DiakController {
         diak.setID(iD);
         return ResponseEntity.ok(diakokRepository.save(diak));
     }
+
 }

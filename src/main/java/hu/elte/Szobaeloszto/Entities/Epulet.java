@@ -1,5 +1,6 @@
 package hu.elte.Szobaeloszto.Entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Column;
@@ -32,5 +33,9 @@ public class Epulet implements Serializable {
     @Column
     @NotNull
     private Integer emeletekSzama;
+    
+    @JsonIgnore
+    @OneToMany(mappedBy = "epulet")
+    private List<Szoba> szobak;
 }
 
