@@ -37,4 +37,9 @@ public class Diak implements Serializable {
     @Column(unique = true)
     @NotNull
     private String emailCim;
+    
+    @ManyToOne
+    @JoinColumn
+    @JsonIgnore
+    private Szoba szoba;
 }
