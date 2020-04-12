@@ -1,6 +1,11 @@
 package hu.elte.Szobaeloszto;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import hu.elte.Szobaeloszto.Entities.User;
+import hu.elte.Szobaeloszto.Entities.Szoba;
+import hu.elte.Szobaeloszto.Entities.Epulet;
+import hu.elte.Szobaeloszto.Entities.Diak;
+import static hu.elte.Szobaeloszto.Entities.User.Role.ROLE_USER;
 import hu.elte.Szobaeloszto.Repositories.BeosztasRepository;
 import hu.elte.Szobaeloszto.Repositories.DiakRepository;
 import hu.elte.Szobaeloszto.Repositories.EpuletRepository;
@@ -8,8 +13,12 @@ import hu.elte.Szobaeloszto.Repositories.SzobaRepository;
 import hu.elte.Szobaeloszto.Repositories.UserRepository;
 import hu.elte.Szobaeloszto.Security.AuthenticatedUser;
 import java.util.Base64;
+import static org.assertj.core.api.Java6Assertions.assertThat;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
+import org.mockito.ArgumentCaptor;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
@@ -93,4 +102,14 @@ void szobakTest() throws Exception {
     }
 }
 
+@ Test
+    void registerTest() throws Exception{
+        User u1 = new User(1,"f4vm6f","user",true,ROLE_USER);
+        mockMvc.perform(post("/users/register").content(objectMapper.writeValueAsString(u1)).contentType("application/json"));
+        ArgumentCaptor<User> userCaptor = ArgumentCaptor.forClass(User.class);
+        verify(userRepo, times(1)).save(userCaptor.capture());
+       
+         assertThat(userCaptor.getValue().getUsername()).isEqualTo("f4vm6f");
+         assertThat(userCaptor.getValue().getRole()).isEqualTo(ROLE_USER);
+    }
 }
