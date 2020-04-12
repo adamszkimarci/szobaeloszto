@@ -78,7 +78,7 @@ void usersTest() throws Exception {
 @Test
 void diakokTest() throws Exception {
     if(test){
-        mockMvc.perform(get("/diakok").contentType("application/json")).andExpect(status().is(404));
+        mockMvc.perform(get("/diakok").contentType("application/json")).andExpect(status().is(200));
     }else{
         mockMvc.perform(get("/diakok").header("Access-Control-Allow-Origin", "*").header("Authorization" , "Basic "+encoded).contentType("application/json")).andExpect(status().is(401));
     }
@@ -87,7 +87,7 @@ void diakokTest() throws Exception {
 @Test
 void szobakTest() throws Exception {
     if(test){
-        mockMvc.perform(get("/szobak").contentType("application/json")).andExpect(status().is(404));
+        mockMvc.perform(get("/szobak").contentType("application/json")).andExpect(status().is(200));
     }else{
         mockMvc.perform(get("/szobak").header("Access-Control-Allow-Origin", "*").header("Authorization" , "Basic "+encoded).contentType("application/json")).andExpect(status().is(401));
     }
