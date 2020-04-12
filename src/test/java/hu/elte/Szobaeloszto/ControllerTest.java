@@ -59,20 +59,38 @@ private boolean test;
 
 @Test
 void whenValidInput_thenReturns200() throws Exception {
-        if(test){
-            mockMvc.perform(get("/diakok").contentType("application/json")).andExpect(status().is(200));
-            }else{
-            mockMvc.perform(get("/diakok").header("Access-Control-Allow-Origin", "*").header("Authorization" , "Basic "+encoded).contentType("application/json")).andExpect(status().is(401));
-        }
+    if(test){
+        mockMvc.perform(get("/diakok").contentType("application/json")).andExpect(status().is(200));
+    }else{
+        mockMvc.perform(get("/diakok").header("Access-Control-Allow-Origin", "*").header("Authorization" , "Basic "+encoded).contentType("application/json")).andExpect(status().is(401));
+    }
 }
 
- @Test
- void usersTest() throws Exception {
-        if(test){
-            mockMvc.perform(get("/users").contentType("application/json")).andExpect(status().is(404));
-        }else{
-            mockMvc.perform(get("/users").header("Access-Control-Allow-Origin", "*").header("Authorization" , "Basic "+encoded).contentType("application/json")).andExpect(status().is(401));
-        }
+@Test
+void usersTest() throws Exception {
+    if(test){
+        mockMvc.perform(get("/users").contentType("application/json")).andExpect(status().is(404));
+    }else{
+        mockMvc.perform(get("/users").header("Access-Control-Allow-Origin", "*").header("Authorization" , "Basic "+encoded).contentType("application/json")).andExpect(status().is(401));
     }
+}
+
+@Test
+void diakokTest() throws Exception {
+    if(test){
+        mockMvc.perform(get("/diakok").contentType("application/json")).andExpect(status().is(404));
+    }else{
+        mockMvc.perform(get("/diakok").header("Access-Control-Allow-Origin", "*").header("Authorization" , "Basic "+encoded).contentType("application/json")).andExpect(status().is(401));
+    }
+}
+
+@Test
+void szobakTest() throws Exception {
+    if(test){
+        mockMvc.perform(get("/szobak").contentType("application/json")).andExpect(status().is(404));
+    }else{
+        mockMvc.perform(get("/szobak").header("Access-Control-Allow-Origin", "*").header("Authorization" , "Basic "+encoded).contentType("application/json")).andExpect(status().is(401));
+    }
+}
 
 }
