@@ -1,7 +1,7 @@
+--Epuletek hozzaadasa
 insert into Epulet (iD, epulet_Nev, emeletek_Szama) values (1, 'A', 11)
 insert into Epulet (iD, epulet_Nev, emeletek_Szama) values (2, 'B', 5)
 insert into Epulet (iD, epulet_Nev, emeletek_Szama) values (3, 'C', 5)
-
 
 --A epület
 insert into Szoba(iD, epulet_Nev, emelet_Szama, szoba_Szama, fero_Hely) values (1, 'A', 1, 1, 2)
@@ -445,8 +445,21 @@ insert into Szoba(iD, epulet_Nev, emelet_Szama, szoba_Szama, fero_Hely) values (
 insert into Szoba(iD, epulet_Nev, emelet_Szama, szoba_Szama, fero_Hely) values (439, 'A', 11, 39, 2)
 insert into Szoba(iD, epulet_Nev, emelet_Szama, szoba_Szama, fero_Hely) values (440, 'A', 11, 40, 2)
 
+--B epulet
 insert into Szoba(iD, epulet_Nev, emelet_Szama, szoba_Szama, fero_Hely) values (441, 'B', 1, 1, 3)
-insert into Szoba(iD, epulet_Nev, emelet_Szama, szoba_Szama, fero_Hely) values (442, 'C', 1, 1, 3)
+insert into Szoba(iD, epulet_Nev, emelet_Szama, szoba_Szama, fero_Hely) values (441, 'B', 2, 1, 3)
+insert into Szoba(iD, epulet_Nev, emelet_Szama, szoba_Szama, fero_Hely) values (441, 'B', 3, 1, 3)
+insert into Szoba(iD, epulet_Nev, emelet_Szama, szoba_Szama, fero_Hely) values (441, 'B', 4, 1, 3)
 
-insert into user (iD, username, password, nev, email_cim, role) values (1, 'admin', '$2y$12$czFQmhMS35s9XbXv7ow2rugNJfylpkcAbTHpZO0U46VLcP4P15PX.', 'Jozsi vagyok', 'kaada@afd.hu', 'ROLE_ADMIN');
-insert into user (iD, username, password, nev, email_cim, role) values (2, 'user', '$2y$12$jqpNRrQCbmi.8A1KacIXVuw4Aq5iWA2.NbVOZFKOs59eaAcv/liqO', 'Jozsi vagyok2', 'kaada2@afd.hu', 'ROLE_USER'); 
+--C epulet
+insert into Szoba(iD, epulet_Nev, emelet_Szama, szoba_Szama, fero_Hely) values (441, 'C', 1, 1, 3)
+insert into Szoba(iD, epulet_Nev, emelet_Szama, szoba_Szama, fero_Hely) values (441, 'C', 2, 1, 3)
+insert into Szoba(iD, epulet_Nev, emelet_Szama, szoba_Szama, fero_Hely) values (441, 'C', 3, 1, 3)
+insert into Szoba(iD, epulet_Nev, emelet_Szama, szoba_Szama, fero_Hely) values (441, 'C', 4, 1, 3)
+
+insert into user (iD, username, password, nev, email_cim, role) values (1, 'admin', '$2y$12$czFQmhMS35s9XbXv7ow2rugNJfylpkcAbTHpZO0U46VLcP4P15PX.', 'ADMIN', 'admin@szobaeloszto.hu', 'ROLE_ADMIN');
+insert into user (iD, username, password, nev, email_cim, role) values (2, 'user00', '$2y$12$jqpNRrQCbmi.8A1KacIXVuw4Aq5iWA2.NbVOZFKOs59eaAcv/liqO', 'Lakatos Marcell', 'kaada2@afd.hu', 'ROLE_USER');
+insert into user (iD, username, password, nev, email_cim, role) values (3, 'user02', '$2y$12$jqpNRrQCbmi.8A1KacIXVuw4Aq5iWA2.NbVOZFKOs59eaAcv/liqO', 'Kovacs Pista', 'kaada3@afd.hu', 'ROLE_USER'); 
+insert into user (iD, username, password, nev, email_cim, role) values (4, 'user03', '$2y$12$jqpNRrQCbmi.8A1KacIXVuw4Aq5iWA2.NbVOZFKOs59eaAcv/liqO', 'Kolompar Jozsef', 'kaada4@afd.hu', 'ROLE_USER');
+insert into user (iD, username, password, nev, email_cim, role) values (5, 'user04', '$2y$12$jqpNRrQCbmi.8A1KacIXVuw4Aq5iWA2.NbVOZFKOs59eaAcv/liqO', 'Pisi Misi', 'kaada5@afd.hu', 'ROLE_USER'); 
+insert into user (iD, username, password, nev, email_cim, role) values (6, 'user05', '$2y$12$jqpNRrQCbmi.8A1KacIXVuw4Aq5iWA2.NbVOZFKOs59eaAcv/liqO', 'Rezmuves Csali', 'kaada6@afd.hu', 'ROLE_USER');   
