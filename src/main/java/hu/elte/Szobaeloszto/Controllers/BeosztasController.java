@@ -5,7 +5,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import hu.elte.Szobaeloszto.Repositories.BeosztasRepository;
+import java.util.List;
 import java.util.Optional;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -17,31 +19,41 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 @CrossOrigin
 @RestController
-@RequestMapping("beosztas")
+@RequestMapping("/beosztas")
 public class BeosztasController {
 
     @Autowired
     private BeosztasRepository beosztasRepository;
-
+    
     @GetMapping("")
     public ResponseEntity<Iterable<Beosztas>> getAll() {
         return ResponseEntity.ok(beosztasRepository.findAll());
     }
-
-    @PutMapping("")
+    
+    @PostMapping("")
     public ResponseEntity<Beosztas> post(@RequestBody Beosztas beoszt) {
         Beosztas newBeoszt = beosztasRepository.save(beoszt);
         return ResponseEntity.ok(newBeoszt);
     }
-
-    @DeleteMapping("/{iD}")
-    public ResponseEntity delete(@PathVariable Integer iD) {
-        Optional<Beosztas> beoszt = beosztasRepository.findById(iD);
-        if (!beoszt.isPresent()) {
+    
+    @GetMapping(value = "/mybeoszt/{neptunkod}")
+    public ResponseEntity<Object> getGenre(@PathVariable String neptunkod) {
+        List<Beosztas> beoszt = beosztasRepository.findByNeptunKod(neptunkod);
+        if (!beoszt.isEmpty()) {
             ResponseEntity.notFound();
         }
 
-        beosztasRepository.delete(beoszt.get());
+        return new ResponseEntity<Object>(beoszt, HttpStatus.OK);
+    }   
+
+    @DeleteMapping("/mybeoszt/{neptunkod}")
+    public ResponseEntity delete(@PathVariable String neptunkod) {
+        List<Beosztas> beoszt = beosztasRepository.findByNeptunKod(neptunkod);
+        if (!beoszt.isEmpty()) {
+            ResponseEntity.notFound();
+        }
+
+        beosztasRepository.delete(beoszt.get(0));
 
         return ResponseEntity.ok().build();
     }

@@ -1,6 +1,3 @@
-insert into Diak (iD, nev, neptun_Kod, email_Cim) values (1, 'Adamszki Marcell', 'UXK13C', 'adamszkimarci@gmail.com')
-insert into Diak (iD, nev, neptun_Kod, email_Cim) values (2, 'Kaposzta Gergely', 'XMVW8Z',  'kapy@outlook.com')
-
 insert into Epulet (iD, epulet_Nev, emeletek_Szama) values (1, 'A', 11)
 insert into Epulet (iD, epulet_Nev, emeletek_Szama) values (2, 'B', 5)
 insert into Epulet (iD, epulet_Nev, emeletek_Szama) values (3, 'C', 5)
@@ -451,5 +448,5 @@ insert into Szoba(iD, epulet_Nev, emelet_Szama, szoba_Szama, fero_Hely) values (
 insert into Szoba(iD, epulet_Nev, emelet_Szama, szoba_Szama, fero_Hely) values (441, 'B', 1, 1, 3)
 insert into Szoba(iD, epulet_Nev, emelet_Szama, szoba_Szama, fero_Hely) values (442, 'C', 1, 1, 3)
 
-insert into user (username, password, enabled, role) values ('admin', '$2y$12$czFQmhMS35s9XbXv7ow2rugNJfylpkcAbTHpZO0U46VLcP4P15PX.', true, 'ROLE_ADMIN');
-insert into user (username, password, enabled, role) values ('user', '$2y$12$jqpNRrQCbmi.8A1KacIXVuw4Aq5iWA2.NbVOZFKOs59eaAcv/liqO', true, 'ROLE_USER'); 
+insert into user (iD, username, password, nev, email_cim, role) values (1, 'admin', '$2y$12$czFQmhMS35s9XbXv7ow2rugNJfylpkcAbTHpZO0U46VLcP4P15PX.', 'Jozsi vagyok', 'kaada@afd.hu', 'ROLE_ADMIN');
+insert into user (iD, username, password, nev, email_cim, role) values (2, 'user', '$2y$12$jqpNRrQCbmi.8A1KacIXVuw4Aq5iWA2.NbVOZFKOs59eaAcv/liqO', 'Jozsi vagyok2', 'kaada2@afd.hu', 'ROLE_USER'); 

@@ -2,7 +2,6 @@ package hu.elte.Szobaeloszto;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import hu.elte.Szobaeloszto.Repositories.BeosztasRepository;
-import hu.elte.Szobaeloszto.Repositories.DiakRepository;
 import hu.elte.Szobaeloszto.Repositories.EpuletRepository;
 import hu.elte.Szobaeloszto.Repositories.SzobaRepository;
 import hu.elte.Szobaeloszto.Repositories.UserRepository;
@@ -34,9 +33,6 @@ AuthenticatedUser authenticatedUser;
 BeosztasRepository beoRepo;
 
 @MockBean
-DiakRepository diakRepo;
-
-@MockBean
 EpuletRepository epuletRepo;
 
 @MockBean
@@ -51,7 +47,7 @@ private BCryptPasswordEncoder passwordEncoder;
 @WithMockUser(value = "MVCtestprofile")
 @Test
 void whenValidInput_thenReturns200() throws Exception {
-    mockMvc.perform(get("/diakok").contentType("application/json")).andExpect(status().is(200));
+    mockMvc.perform(get("/szobak").contentType("application/json")).andExpect(status().is(200));
 }
 
 @WithMockUser(value = "MVCtestprofile")
@@ -62,13 +58,7 @@ void usersTest() throws Exception {
 
 @WithMockUser(value = "MVCtestprofile")
 @Test
-void diakokTest() throws Exception {
-    mockMvc.perform(get("/diakok").contentType("application/json")).andExpect(status().is(200));
-}
-
-@WithMockUser(value = "MVCtestprofile")
-@Test
 void szobakTest() throws Exception {
-    mockMvc.perform(get("/szobak").contentType("application/json")).andExpect(status().is(200));
+    mockMvc.perform(get("/beosztas").contentType("application/json")).andExpect(status().is(200));
 }
 }

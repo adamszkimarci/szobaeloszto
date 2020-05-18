@@ -11,8 +11,6 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
 
 @Entity
@@ -26,7 +24,7 @@ public class Beosztas implements Serializable {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer iD;
 
-    @Column(unique = true)
+    @Column
     @NotNull
     private String neptunKod;
     
@@ -37,6 +35,14 @@ public class Beosztas implements Serializable {
     @Column
     @NotNull
     private String epulet;
+    
+    /*@Column
+    @NotNull
+    private String szobatars1;
+    
+    @Column
+    @NotNull
+    private String szobatars2;*/
     
     @Column
     @NotNull
