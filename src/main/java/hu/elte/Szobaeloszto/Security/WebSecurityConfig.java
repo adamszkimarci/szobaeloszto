@@ -10,28 +10,24 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 @Configuration
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(securedEnabled = true)
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
-    @Autowired
-    private UserDetailsService userDetailsService;
     
-    @Value("${need.test}")
-    private boolean test;
+    @Autowired
+    private MyUserDetailsService userDetailsService;
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
-      if(!test){
       http
           .cors()
               .and()
           .csrf().disable()
           .authorizeRequests()
-              .antMatchers("/h2/**", "/users/register").permitAll()   // important!
+              .antMatchers("/h2/**", "/users/login").permitAll()   // important!
               .anyRequest().authenticated()
               .and()
           .httpBasic()
@@ -42,48 +38,18 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
               .and()
           .sessionManagement()
               .sessionCreationPolicy(SessionCreationPolicy.STATELESS);
-       }else{
-         http
-          .cors()
-              .and()
-          .csrf().disable()
-          .authorizeRequests()
-              .antMatchers("/**").permitAll()   // important!
-              .anyRequest().authenticated()
-              .and()
-          .httpBasic()
-              .authenticationEntryPoint(getBasicAuthEntryPoint())
-              .and()
-          .headers()      // important!
-              .frameOptions().disable()
-              .and()
-          .sessionManagement()
-              .sessionCreationPolicy(SessionCreationPolicy.STATELESS);
-        }
-    }    
+    }
     @Autowired
     protected void configureAuthentication(AuthenticationManagerBuilder auth) throws Exception {
-      if(!test){
         auth
           .userDetailsService(userDetailsService)
           .passwordEncoder(passwordEncoder());
-        }else{
-        auth
-          .inMemoryAuthentication()
-          .withUser("user").password("$2y$12$jqpNRrQCbmi.8A1KacIXVuw4Aq5iWA2.NbVOZFKOs59eaAcv/liqO").roles("ADMIN");
-    }
     }
     @Autowired
     protected void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-      if(!test){
-        auth
-                .userDetailsService(userDetailsService)
-                .passwordEncoder(passwordEncoder());
-    }else{
         auth
           .inMemoryAuthentication()
-          .withUser("user").password("$2y$12$jqpNRrQCbmi.8A1KacIXVuw4Aq5iWA2.NbVOZFKOs59eaAcv/liqO").roles("ADMIN");
-        }
+          .withUser("MVCtestprofile").password("$2a$04$YDiv9c./ytEGZQopFfExoOgGlJL6/o0er0K.hiGb5TGKHUL8Ebn..").roles("ADMIN");
     }
 
     @Bean

@@ -26,19 +26,18 @@ public class UserController {
     @Autowired 
     private AuthenticatedUser authenticatedUser;
 
-    @PostMapping("register")
+    @PostMapping("/register")
     public ResponseEntity<User> register(@RequestBody User user) {
         Optional<User> oUser = userRepository.findByUsername(user.getUsername());
         if (oUser.isPresent()) {
             return ResponseEntity.badRequest().build();
         }
         user.setPassword(passwordEncoder.encode(user.getPassword()));
-        user.setEnabled(true);
         user.setRole(User.Role.ROLE_USER);
         return ResponseEntity.ok(userRepository.save(user));
     }
 
-    @PostMapping("login")
+    @PostMapping("/login")
     public ResponseEntity login() {
       return ResponseEntity.ok(authenticatedUser.getUser());
     } 

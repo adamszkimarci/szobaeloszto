@@ -2,6 +2,7 @@ package hu.elte.Szobaeloszto.Entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -46,7 +47,7 @@ public class Szoba implements Serializable {
     
     @JsonIgnore
     @OneToMany(mappedBy = "szoba")
-    private List<Diak> diakok;
+    private List<User> diakok;
     
     @ManyToOne
     @JoinColumn

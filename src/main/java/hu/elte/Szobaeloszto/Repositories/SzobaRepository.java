@@ -9,4 +9,8 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface SzobaRepository extends CrudRepository<Szoba, Integer> {
+    
+    @Query("select sz FROM Szoba sz WHERE sz.epuletNev = ?1")
+    List<Szoba> findByEpuletNev(String epulet);
+    
 }

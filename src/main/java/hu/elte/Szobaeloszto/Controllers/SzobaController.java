@@ -38,7 +38,17 @@ public class SzobaController {
         }
 
         return ResponseEntity.ok(szoba.get());
-    }  
+    }
+    
+    @GetMapping(value = "/epulet/{epulet}")
+    public ResponseEntity<Object> getGenre(@PathVariable String epulet) {
+        List<Szoba> szoba = szobaRepository.findByEpuletNev(epulet);
+        if (!szoba.isEmpty()) {
+            ResponseEntity.notFound();
+        }
+
+        return new ResponseEntity<Object>(szoba, HttpStatus.OK);
+    }   
 
     @PostMapping("")
     public ResponseEntity<Szoba> post(@RequestBody Szoba szoba) {
